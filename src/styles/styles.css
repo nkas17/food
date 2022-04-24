@@ -1,0 +1,254 @@
+@font-face {
+  font-family: 'Flex Display';
+  src: url('./fonts/FlexDisplay-Thin.eot');
+  src: url('./fonts/FlexDisplay-Thin.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/FlexDisplay-Thin.woff') format('woff'),
+    url('./fonts/FlexDisplay-Thin.ttf') format('truetype'),
+    url('./fonts/FlexDisplay-Thin.svg#FlexDisplay-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+::after,
+::before {
+  /*box-sizing: border-box;*/
+}
+
+html {
+  font-size: 24px;
+}
+
+body {
+  background: rgb(205, 205, 205);
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid #a053ec;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+a {
+  text-decoration: none;
+  color: #6d00d9;
+}
+
+a:hover {
+  text-decoration: #a053ec underline solid;
+}
+
+#app {
+  font: 1em Garamond, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  height: 100%;
+  overflow: auto;
+}
+
+.page-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1rem 0.5rem 1rem;
+  font: 1em 'Flex Display', Helvetica, Arial, sans-serif;
+  letter-spacing: 7px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /*justify-content: space-between;*/
+}
+
+.header-title {
+  min-width: fit-content;
+  flex: 1;
+}
+
+.header-search-wrapper {
+  flex: 3;
+}
+
+.text-box {
+  border: 1px solid purple;
+  border-radius: 5px;
+  padding-left: 8px;
+  font-size: 1em;
+}
+
+.label .text-box {
+  margin-left: 16px;
+}
+
+.header-search-box {
+  font-weight: lighter;
+  margin: 10px 0;
+  font-size: 1em;
+  background: rgb(230, 230, 230);
+}
+
+.header-nav {
+  flex: 0;
+}
+
+.content-wrapper {
+  border-top: 2px solid #a053ec;
+  border-bottom: 2px solid #a053ec;
+  background: rgb(255, 255, 255);
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.box {
+  margin: 16px 32px;
+}
+
+.list {
+  margin: 16px 32px;
+}
+
+.list-item {
+  padding: 24px 0;
+  margin: 0 24px;
+  border-bottom: 1px solid #a053ec;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+p.input-error {
+  color: red;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+input.input-error {
+  border: 2px solid red;
+}
+
+nav {
+  font-family: Arial, sans-serif;
+  letter-spacing: 5px;
+}
+
+nav a {
+  margin-right: 8px;
+  margin-left: 4px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: #a053ec underline solid 2px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.recipe-display__parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe-display__child__ingredients {
+  flex: 1;
+  min-width: fit-content;
+  /*border-left: 1px solid rgba(0, 0, 0, 0.1);*/
+  /*padding-left: 16px;*/
+  margin-bottom: 16px;
+}
+
+.recipe-display__child__directions {
+  flex: 2;
+  min-width: fit-content;
+  /*border-left: 1px solid rgba(0, 0, 0, 0.1);*/
+  /*padding-left: 16px;*/
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  font-size: 1.25rem;
+}
+
+.form-label {
+  font: 0.75em 'Flex Display', Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+}
+
+.form-control {
+  font-size: 1rem;
+  border: 1px solid purple;
+  border-radius: 5px;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #6d00d9;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}

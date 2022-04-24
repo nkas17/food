@@ -1,0 +1,12 @@
+.idea
+.ds_store
+__snapshots__
+.gitignore
+.prettierignore
+.eslintignore
+dist
+fonts
+images
+coverage
+stats.json
+assets
