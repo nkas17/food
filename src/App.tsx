@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ThemeToggle from './components/ThemeToggle';
+// import ThemeToggle from './components/ThemeToggle';
 import About from './pages/About';
 import Home from './pages/Home';
 import RecipeList from './pages/RecipeList';
@@ -16,7 +16,7 @@ import { RecipeProvider } from './context/RecipeContext';
 function App() {
   return (
     <main>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
       <RecipeProvider>
         <Header />
         <Routes>
