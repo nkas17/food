@@ -16,7 +16,7 @@ import { RecipeProvider } from './context/RecipeContext';
 function App() {
   return (
     <main>
-      {/* <ThemeToggle /> */}
+      <ThemeToggle />
       <RecipeProvider>
         <Header />
         <Routes>
