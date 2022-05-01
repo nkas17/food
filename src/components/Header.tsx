@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { reject } from 'lodash';
 import type Recipe from '../types/recipe';
 import { RecipeContext } from '../context/RecipeContext';
+import Navigation from './Navigation';
 
 /**
  * Common Header component
@@ -38,6 +39,8 @@ function Header() {
   return (
     <header className="page-header">
       <h1 className="header-title">let&apos;s eat!</h1>
+      <img alt="bread" src="bread.png" width={100} />
+
       <div className="header-search-wrapper">
         <input
           className="text-box header-search-box"
@@ -48,19 +51,7 @@ function Header() {
           onChange={handleChange}
         />
       </div>
-      <nav className="header-nav">
-        <Link to="/">
-          <span className={`${pathname === '/' ? 'bold' : ''}`}>home</span>
-        </Link>
-        |
-        <Link to="/recipe">
-          <span className={`${pathname === '/recipe' ? 'bold' : ''}`}>recipes</span>
-        </Link>
-        |
-        <Link to="/about">
-          <span className={`${pathname === '/about' ? 'bold' : ''}`}>about</span>
-        </Link>
-      </nav>
+      <Navigation />
     </header>
   );
 }

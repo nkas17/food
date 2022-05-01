@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface TextAreaProps {
+  id: string;
   name: string;
   label: string;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -13,6 +14,7 @@ interface TextAreaProps {
 }
 
 function TextArea({
+  id,
   name,
   label,
   onChange,
@@ -30,12 +32,13 @@ function TextArea({
 
   return (
     <div className={wrapperClass}>
-      <label className="form-label" htmlFor={name}>
+      <label className="form-label" htmlFor={id}>
         {label}
       </label>
       <textarea
+        id={id}
         name={name}
-        className="form-control"
+        className="form-control text-box"
         rows={rows}
         cols={cols}
         placeholder={placeholder}

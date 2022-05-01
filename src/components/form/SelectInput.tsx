@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 interface SelectInputProps {
+  id: string;
   name: string;
   label: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -11,6 +12,7 @@ interface SelectInputProps {
 }
 
 function SelectInput({
+  id,
   name,
   label,
   onChange,
@@ -21,10 +23,16 @@ function SelectInput({
 }: SelectInputProps) {
   return (
     <div className="form-group">
-      <label className="form-label" htmlFor={name}>
+      <label className="form-label" htmlFor={id}>
         {label}
       </label>
-      <select name={name} value={value} onChange={onChange} className="form-control">
+      <select
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className="form-control text-box"
+      >
         <option value="">{defaultOption}</option>
         {options?.map((option) => (
           <option key={option.value} value={option.value}>

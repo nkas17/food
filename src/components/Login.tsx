@@ -2,8 +2,11 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import UserApi from '../api/UserApi';
 import LoadingSpinner from './form/LoadingSpinner';
+import { UserContext } from '../context/UserContext';
 
 function Login() {
+  // @ts-ignore
+  const [user, setUser] = React.useContext(UserContext);
   const [username, setUsername] = React.useState<{ username: string; error: boolean }>({
     username: '',
     error: false,
@@ -18,9 +21,9 @@ function Login() {
   const [error, setError] = React.useState<{ message: string } | null>(null);
 
   useEffect(() => {
-    setIsAuthenticated(!!UserApi.getCurrentUser());
+    setIsAuthenticated(user !== null);
     setIsLoaded(true);
-  }, []);
+  }, [user]);
 
   const handleChange = ({
     currentTarget: { name, value },
@@ -46,11 +49,12 @@ function Login() {
     if (username.username && password.password) {
       setIsAuthenticating(true);
       try {
-        await UserApi.userLogin(username.username, password.password);
+        const theUser = await UserApi.userLogin(username.username, password.password);
+        setUser(theUser);
       } catch (e: any) {
         setError(e);
       }
-      setIsAuthenticated(!!UserApi.getCurrentUser());
+      setIsAuthenticated(user !== null);
       setIsAuthenticating(false);
       setPassword({ password: '', error: false });
       setUsername({ username: '', error: false });
@@ -58,8 +62,8 @@ function Login() {
   };
 
   const handleLogoutClick = () => {
-    UserApi.logout();
-    setIsAuthenticated(!!UserApi.getCurrentUser());
+    setUser(null);
+    setIsAuthenticated(user !== null);
   };
 
   return isLoaded ? (
@@ -97,7 +101,7 @@ function Login() {
           </div>
           {error && <p className="box input-error">{error?.message}</p>}
           <div className="box">
-            <button type="button" onClick={handleLoginClick}>
+            <button className="button button-primary" type="button" onClick={handleLoginClick}>
               login
             </button>
           </div>
@@ -105,7 +109,7 @@ function Login() {
       )}
       {isAuthenticated && (
         <div className="box">
-          <button type="button" onClick={handleLogoutClick}>
+          <button className="button button-primary" type="button" onClick={handleLogoutClick}>
             logout
           </button>
         </div>

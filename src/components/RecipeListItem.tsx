@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import vanillaToast from 'vanilla-toast';
+import { toast } from 'react-toastify';
 import type Recipe from '../types/recipe';
-import type User from '../types/user';
-import UserApi from '../api/UserApi';
 import RecipeApi from '../api/RecipeApi';
 import { RecipeContext } from '../context/RecipeContext';
+import { UserContext } from '../context/UserContext';
 
 function RecipeListItem({ recipe }: { recipe: Recipe }) {
-  const user: User = UserApi.getCurrentUser();
+  // @ts-ignore
+  const [user] = React.useContext(UserContext);
+
   // @ts-ignore
   const [recipeData, setRecipeData] = React.useContext(RecipeContext);
   const { recipes, recipesToDisplay } = recipeData;
@@ -33,21 +34,25 @@ function RecipeListItem({ recipe }: { recipe: Recipe }) {
               (theRecipe: Recipe) => theRecipe._id !== recipe?._id,
             ),
           });
-          vanillaToast.success('Recipe deleted');
+          toast.success('Recipe deleted');
         }
       } catch (error) {
-        vanillaToast.error(error);
+        // @ts-ignore
+        toast.error(error);
       }
     }
   };
-  // recipes.filter((recipe: Recipe) => recipe._id !== action?.payload?.recipe?._id)
   return (
-    <div className="list-item">
-      <Link to={recipe.id}>{recipe.title}</Link>
-      {user && (
-        <button type="button" className="btn btn-link delete-recipe" onClick={handleClick}>
-          delete
-        </button>
+    <div className="list-item list-item__flex">
+      <div className="list-item__flex-item">
+        <Link to={recipe.id}>{recipe.title}</Link>
+      </div>
+      {user !== null && (
+        <div className=" list-item__flex-item list-item__flex-item__delete-button">
+          <button type="button" className="button button-link nmw-left-8" onClick={handleClick}>
+            delete
+          </button>
+        </div>
       )}
     </div>
   );

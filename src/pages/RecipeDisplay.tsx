@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import type Recipe from '../types/recipe';
-import UserApi from '../api/UserApi';
-import type User from '../types/user';
 import { RecipeContext } from '../context/RecipeContext';
 import LoadingSpinner from '../components/form/LoadingSpinner';
+import { UserContext } from '../context/UserContext';
 
 function RecipeDisplay() {
   // @ts-ignore
   const [recipeData] = React.useContext(RecipeContext);
   const { recipes, isLoading } = recipeData;
-  const [user] = React.useState<User>((): User => UserApi.getCurrentUser());
+  // @ts-ignore
+  const [user] = React.useContext(UserContext);
   const location = useLocation();
   const recipeId = location.pathname.split('/')[2];
   let recipe: Recipe | undefined = {
@@ -55,7 +55,9 @@ function RecipeDisplay() {
             <span style={{ fontSize: '1em' }}> - {recipe.category}</span>
             {'  '}
             {user && <Link to="edit">edit</Link>}
-            <p style={{ marginTop: '0', paddingLeft: '0.5rem' }}>{recipe.description}</p>
+            <p className="nmw-top-16" style={{ paddingLeft: '0.5rem' }}>
+              {recipe.description}
+            </p>
           </header>
           <div className="recipe-display__child__ingredients" style={{ marginLeft: '16px' }}>
             {recipe.ingredients.split('\n').map(
@@ -63,7 +65,9 @@ function RecipeDisplay() {
                 ingredient && (
                   <p key={ingredient}>
                     <input type="checkbox" id={ingredient} />
-                    <label htmlFor={ingredient}>{ingredient}</label>
+                    <label className="container" htmlFor={ingredient}>
+                      {ingredient}
+                    </label>
                   </p>
                 ),
             )}
@@ -75,7 +79,9 @@ function RecipeDisplay() {
                 direction && (
                   <p key={direction}>
                     <input type="checkbox" id={direction} />
-                    <label htmlFor={direction}>{direction}</label>
+                    <label className="container" htmlFor={direction}>
+                      {direction}
+                    </label>
                   </p>
                 ),
             )}

@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import vanillaToast from 'vanilla-toast';
+import { toast } from 'react-toastify';
 import type Recipe from '../types/recipe';
 import TextInput from '../components/form/TextInput';
 import TextArea from '../components/form/TextArea';
 import type Category from '../types/category';
 import SelectInput from '../components/form/SelectInput';
 import RecipeApi from '../api/RecipeApi';
-import UserApi from '../api/UserApi';
-import type User from '../types/user';
 import { RecipeContext } from '../context/RecipeContext';
 import CategoryApi from '../api/mockCategoryApi';
+import { UserContext } from '../context/UserContext';
 
 const replaceAll = (str: string, get: string, replace: string) =>
   str.replace(new RegExp(get, 'g'), replace);
@@ -25,6 +24,8 @@ function RecipeEntry() {
   };
   const location = useLocation();
   const navigate = useNavigate();
+  // @ts-ignore
+  const [user] = React.useContext(UserContext);
   // @ts-ignore
   const [recipeData, setRecipeData] = React.useContext(RecipeContext);
   const { recipes, recipesToDisplay } = recipeData;
@@ -58,7 +59,6 @@ function RecipeEntry() {
     tempRecipe[field] = value;
     setRecipeToUpdate(tempRecipe);
   };
-  const user: User = UserApi.getCurrentUser();
 
   const recipeFormIsValid = () => {
     let formIsValid = true;
@@ -96,13 +96,13 @@ function RecipeEntry() {
         ],
       });
       setSaving(false);
-      vanillaToast.success('Recipe saved');
+      toast.success('recipe saved');
       navigate(`/recipe/${updatedRecipe.id}`);
     }
   };
 
   const handleCancel = () => {
-    vanillaToast.success('Recipe cancelled');
+    toast.success('update cancelled');
     if (recipeToUpdate.id === undefined) navigate('/recipe');
     else navigate(`/recipe/${recipeToUpdate.id}`);
   };
@@ -113,12 +113,14 @@ function RecipeEntry() {
         <form className="box">
           <TextInput
             name="title"
+            id="title"
             label="Title"
             value={recipeToUpdate?.title}
             onChange={handleChange}
             error={errors.title}
           />
           <TextInput
+            id="description"
             name="description"
             label="Description"
             value={recipeToUpdate?.description}
@@ -126,6 +128,7 @@ function RecipeEntry() {
             error={errors.description}
           />
           <TextArea
+            id="ingredients"
             name="ingredients"
             label="Ingredient List"
             rows={10}
@@ -134,6 +137,7 @@ function RecipeEntry() {
             error={errors.ingredients}
           />
           <TextArea
+            id="directions"
             name="directions"
             label="Directions"
             rows={10}
@@ -142,6 +146,7 @@ function RecipeEntry() {
             error={errors.directions}
           />
           <SelectInput
+            id="category"
             name="category"
             label="Category"
             value={recipeToUpdate?.category}
@@ -150,24 +155,26 @@ function RecipeEntry() {
             onChange={handleChange}
             error={errors.category}
           />
-          <button
-            id="save"
-            type="button"
-            disabled={saving}
-            className="btn btn-primary"
-            onClick={handleSave}
-          >
-            {saving ? 'saving...' : 'save'}
-          </button>
-          <button
-            id="cancel"
-            type="button"
-            disabled={saving}
-            className="btn btn-link"
-            onClick={handleCancel}
-          >
-            cancel
-          </button>
+          <div className="box">
+            <button
+              id="save"
+              type="button"
+              disabled={saving}
+              className="button button-primary"
+              onClick={handleSave}
+            >
+              {saving ? 'saving...' : 'save'}
+            </button>
+            <button
+              id="cancel"
+              type="button"
+              disabled={saving}
+              className="button button-link nmw-left-16"
+              onClick={handleCancel}
+            >
+              cancel
+            </button>
+          </div>
         </form>
       </div>
     </section>

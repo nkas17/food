@@ -1,8 +1,6 @@
 const handleResult = (response: Response) => {
   if (response.status >= 200 && response.status < 300) {
-    return response.json().then((data) => {
-      localStorage.setItem('user', JSON.stringify(data));
-    });
+    return response.json();
   }
   if (response.status === 401) {
     return response.json().then((data) => {
@@ -35,16 +33,6 @@ class UserApi {
     };
 
     return fetch(url, options).then(handleResult);
-  }
-
-  static logout() {
-    localStorage.removeItem('user');
-  }
-
-  static getCurrentUser() {
-    const user = localStorage?.getItem('user');
-    if (user) return JSON.parse(user);
-    return null;
   }
 }
 
