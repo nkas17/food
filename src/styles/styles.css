@@ -371,11 +371,6 @@ input[type='checkbox']:focus + label::before {
   flex-grow: 1;
 }
 
-.list-item__flex-item__recipe {
-  max-width: 250px;
-  min-width: 200px;
-}
-
 .list-item__flex-item__delete-button {
   text-align: right;
 }
@@ -438,6 +433,11 @@ nav a:hover {
 }
 .nmw-top-16 {
   margin-top: 16px;
+}
+
+.nmw-fine-print {
+  font-size: 0.75rem;
+  font-style: italic;
 }
 
 .lds-ripple {

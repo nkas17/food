@@ -46,8 +46,8 @@ function RecipeListItem({ recipe }: { recipe: Recipe }) {
     <div className="list-item list-item__flex">
       <div className="list-item__flex-item list-item__flex-item__recipe">
         <Link to={recipe.id}>{recipe.title}</Link>
+        <div className="nmw-fine-print nmw-top-8 nmw-left-8">{recipe.category}</div>
       </div>
-      <div className="list-item__flex-item">{recipe.category}</div>
       {user !== null && (
         <div className=" list-item__flex-item list-item__flex-item__delete-button">
           <button type="button" className="button button-link nmw-left-8" onClick={handleClick}>
