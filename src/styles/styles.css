@@ -371,6 +371,11 @@ input[type='checkbox']:focus + label::before {
   flex-grow: 1;
 }
 
+.list-item__flex-item__recipe {
+  max-width: 250px;
+  min-width: 200px;
+}
+
 .list-item__flex-item__delete-button {
   text-align: right;
 }

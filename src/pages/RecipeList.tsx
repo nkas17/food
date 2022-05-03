@@ -24,27 +24,42 @@ function RecipeList() {
     <section className="content-wrapper">
       <div className="content">
         {isLoading && <LoadingSpinner />}
-        {recipesToDisplay?.length > 0 ? (
-          <>
-            {user !== null && (
-              <p className="box">
-                {' '}
-                <Link className="button button-link" to="new/edit">
-                  add
-                </Link>
-              </p>
-            )}
-            <div className="list">
-              {recipesToDisplay?.map((recipe: Recipe) => (
-                <RecipeListItem recipe={recipe} key={recipe.id} />
-              ))}
-            </div>
-          </>
-        ) : (
-          <p className="box" style={{ fontStyle: 'italic', color: 'rgba(140, 49, 28, .75)' }}>
-            no recipes to display
-          </p>
-        )}
+        {!isLoading &&
+          (recipesToDisplay?.length > 0 ? (
+            <>
+              {user !== null && (
+                <p
+                  className="box"
+                  style={{
+                    borderBottom: '1px solid #f29544',
+                    margin: '32px',
+                    textAlign: 'right',
+                    paddingBottom: '16px',
+                  }}
+                >
+                  {' '}
+                  <Link className="button button-primary" to="new/edit">
+                    add
+                  </Link>
+                </p>
+              )}
+              <div className="list">
+                {recipesToDisplay?.map((recipe: Recipe) => (
+                  <RecipeListItem recipe={recipe} key={recipe.id} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <p
+              className="box"
+              style={{
+                fontStyle: 'italic',
+                color: 'rgba(140, 49, 28, .75)',
+              }}
+            >
+              no recipes to display
+            </p>
+          ))}
       </div>
     </section>
   );
