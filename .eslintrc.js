@@ -24,6 +24,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'jsx-a11y/label-has-for': 'off',
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/indent': 'off',
 
     quotes: [
       'error',

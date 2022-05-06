@@ -7,15 +7,15 @@ function Navigation() {
   return (
     <nav className="header-nav">
       <Link to="/">
-        <span className={`${pathname === '/' ? 'bold' : ''}`}>home</span>
+        <span className={`${pathname === '/' ? 'nmw-bold' : ''}`}>home</span>
       </Link>
       |
       <Link to="/recipe">
-        <span className={`${pathname === '/recipe' ? 'bold' : ''}`}>recipes</span>
+        <span className={`${pathname === '/recipe' ? 'nmw-bold' : ''}`}>recipes</span>
       </Link>
       |
       <Link to="/about">
-        <span className={`${pathname === '/about' ? 'bold' : ''}`}>about</span>
+        <span className={`${pathname === '/about' ? 'nmw-bold' : ''}`}>about</span>
       </Link>
     </nav>
   );

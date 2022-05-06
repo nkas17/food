@@ -31,19 +31,25 @@ function RecipeList() {
                 <p
                   className="box"
                   style={{
-                    borderBottom: '1px solid #f29544',
-                    margin: '32px',
                     textAlign: 'right',
-                    paddingBottom: '16px',
                   }}
                 >
                   {' '}
-                  <Link className="button button-primary" to="new/edit">
+                  <Link className="button button-primary nmw-right-16" to="new/edit">
                     add
                   </Link>
                 </p>
               )}
-              <div className="list">
+              <div
+                className="list"
+                style={
+                  user !== null
+                    ? {
+                        borderTop: '1px solid #f29544',
+                      }
+                    : {}
+                }
+              >
                 {recipesToDisplay?.map((recipe: Recipe) => (
                   <RecipeListItem recipe={recipe} key={recipe.id} />
                 ))}

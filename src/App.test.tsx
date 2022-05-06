@@ -100,9 +100,9 @@ describe('App runs happy path scenarios', () => {
     const aboutLink = screen.getByRole('link', { name: /about/i });
 
     // Home
-    expect(homeLink.firstChild).toHaveClass('bold', { exact: true });
-    expect(recipeLink.firstChild).not.toHaveClass('bold', { exact: true });
-    expect(aboutLink.firstChild).not.toHaveClass('bold', { exact: true });
+    expect(homeLink.firstChild).toHaveClass('nmw-bold', { exact: true });
+    expect(recipeLink.firstChild).not.toHaveClass('nmw-bold', { exact: true });
+    expect(aboutLink.firstChild).not.toHaveClass('nmw-bold', { exact: true });
     expect(screen.getByLabelText('username')).toBeInTheDocument();
     expect(screen.getByLabelText('password')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /login/i })).toBeInTheDocument();
@@ -110,9 +110,9 @@ describe('App runs happy path scenarios', () => {
     // Recipe List
     await user.click(recipeLink);
     expect(window.scroll).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'smooth' });
-    expect(homeLink.firstChild).not.toHaveClass('bold', { exact: true });
-    expect(recipeLink.firstChild).toHaveClass('bold', { exact: true });
-    expect(aboutLink.firstChild).not.toHaveClass('bold', { exact: true });
+    expect(homeLink.firstChild).not.toHaveClass('nmw-bold', { exact: true });
+    expect(recipeLink.firstChild).toHaveClass('nmw-bold', { exact: true });
+    expect(aboutLink.firstChild).not.toHaveClass('nmw-bold', { exact: true });
     expect(screen.getByRole('link', { name: /quiche/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /tacos 2.2/i })).toBeInTheDocument();
 
@@ -125,9 +125,9 @@ describe('App runs happy path scenarios', () => {
     // About
     await user.click(aboutLink);
     expect(window.scroll).toHaveBeenCalledWith({ top: 0, left: 0, behavior: 'smooth' });
-    expect(homeLink.firstChild).not.toHaveClass('bold', { exact: true });
-    expect(recipeLink.firstChild).not.toHaveClass('bold', { exact: true });
-    expect(aboutLink.firstChild).toHaveClass('bold', { exact: true });
+    expect(homeLink.firstChild).not.toHaveClass('nmw-bold', { exact: true });
+    expect(recipeLink.firstChild).not.toHaveClass('nmw-bold', { exact: true });
+    expect(aboutLink.firstChild).toHaveClass('nmw-bold', { exact: true });
     expect(screen.getByRole('link', { name: /nathan m weller/i })).toBeInTheDocument();
   });
 
