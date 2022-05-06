@@ -6,23 +6,23 @@ import type Category from '../types/category';
 // All calls return promises.
 const categories: Category[] = [
   {
-    id: 1,
+    id: 'other',
     name: 'other',
   },
   {
-    id: 2,
+    id: 'dessert',
     name: 'dessert',
   },
   {
-    id: 3,
+    id: 'poultry',
     name: 'poultry',
   },
   {
-    id: 4,
+    id: 'vegetable',
     name: 'vegetable',
   },
   {
-    id: 5,
+    id: 'beef',
     name: 'beef',
   },
 ];

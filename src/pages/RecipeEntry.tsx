@@ -33,7 +33,7 @@ function RecipeEntry() {
     () => recipes?.find((recipe: Recipe) => recipe.id === location.pathname.split('/')[2]) || {},
   );
   const [categorieOptions, setCategorieOptionss] = React.useState<
-    { text: string; value: number }[] /* eslint-disable-line @typescript-eslint/indent */
+    { text: string; value: string }[] /* eslint-disable-line @typescript-eslint/indent */
   >([]);
   const [saving, setSaving] = React.useState(false);
   const [errors, setErrors] = React.useState(initialErrors);
