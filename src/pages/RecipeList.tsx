@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Card, Page } from '@nmw/react-components';
 import RecipeListItem from '../components/RecipeListItem';
 import type Recipe from '../types/recipe';
 import { RecipeContext } from '../context/RecipeContext';
@@ -21,8 +22,8 @@ function RecipeList() {
     });
   });
   return (
-    <section className="content-wrapper">
-      <div className="content">
+    <Page>
+      <Card type="elevated">
         {isLoading && <LoadingSpinner />}
         {!isLoading &&
           (recipesToDisplay?.length > 0 ? (
@@ -66,8 +67,8 @@ function RecipeList() {
               no recipes to display
             </p>
           ))}
-      </div>
-    </section>
+      </Card>
+    </Page>
   );
 }
 

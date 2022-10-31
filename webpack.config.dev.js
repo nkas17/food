@@ -11,6 +11,7 @@ module.exports = {
   context: resolve(__dirname, 'src'),
   devtool: 'inline-source-map',
   devServer: {
+    port: 3001,
     hot: true,
     historyApiFallback: {
       rewrites: [{ to: '/index.html' }],
@@ -51,11 +52,16 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(ts|js)x?$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
     ],
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: 'index.html' }, { from: 'assets' }],
+      patterns: [{ from: 'index.html' }, { from: 'assets' }, { from: 'images' }],
     }),
     new ReactRefreshWebpackPlugin(),
   ],

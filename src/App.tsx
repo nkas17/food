@@ -16,7 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
  */
 function App() {
   return (
-    <main>
+    <main className="display-small">
       <ToastContainer
         position="top-center"
         autoClose={2000}

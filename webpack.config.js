@@ -43,11 +43,16 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(ts|js)x?$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
     ],
   },
   plugins: [
     new CopyWebpackPlugin({
-      patterns: [{ from: 'index.html' }, { from: 'assets' }],
+      patterns: [{ from: 'index.html' }, { from: 'assets' }, { from: 'images' }],
     }),
     // new BundleAnalyzerPlugin(),
   ],

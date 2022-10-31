@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Page, Card } from '@nmw/react-components';
 import type Recipe from '../types/recipe';
 import { RecipeContext } from '../context/RecipeContext';
 import LoadingSpinner from '../components/form/LoadingSpinner';
@@ -46,8 +47,8 @@ function RecipeDisplay() {
   }, [recipe.id]);
 
   return (
-    <section className="content-wrapper">
-      <div className="content">
+    <Page>
+      <Card type="elevated">
         {isLoading && <LoadingSpinner />}
         <div className="box">
           <header>
@@ -59,13 +60,13 @@ function RecipeDisplay() {
               {recipe.description}
             </p>
           </header>
-          <div className="recipe-display__child__ingredients" style={{ marginLeft: '16px' }}>
+          <div className="recipe-display__child__ingredients" style={{ margin: '16px' }}>
             {recipe.ingredients.split('\n').map(
               (ingredient: string) =>
                 ingredient && (
-                  <p key={ingredient}>
-                    <input type="checkbox" id={ingredient} />
-                    <label className="container" htmlFor={ingredient}>
+                  <p key={ingredient} style={{ marginBottom: '8px' }}>
+                    <input style={{ marginTop: '8px' }} type="checkbox" id={ingredient} />
+                    <label style={{ paddingTop: '6px' }} htmlFor={ingredient}>
                       {ingredient}
                     </label>
                   </p>
@@ -73,13 +74,13 @@ function RecipeDisplay() {
             )}
           </div>
           <hr />
-          <div className="recipe-display__child__directions" style={{ marginLeft: '16px' }}>
+          <div className="recipe-display__child__directions" style={{ margin: '16px' }}>
             {recipe.directions.split('\n').map(
               (direction: string) =>
                 direction && (
-                  <p key={direction}>
-                    <input type="checkbox" id={direction} />
-                    <label className="container" htmlFor={direction}>
+                  <p key={direction} style={{ marginBottom: '8px' }}>
+                    <input style={{ marginTop: '8px' }} type="checkbox" id={direction} />
+                    <label style={{ paddingTop: '6px' }} htmlFor={direction}>
                       {direction}
                     </label>
                   </p>
@@ -87,8 +88,8 @@ function RecipeDisplay() {
             )}
           </div>
         </div>
-      </div>
-    </section>
+      </Card>
+    </Page>
   );
 }
 

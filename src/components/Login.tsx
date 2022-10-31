@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
+import { Card, Button, Input } from '@nmw/react-components';
 import UserApi from '../api/UserApi';
 import LoadingSpinner from './form/LoadingSpinner';
 import { UserContext } from '../context/UserContext';
@@ -70,12 +71,13 @@ function Login() {
     <>
       {isAuthenticating && <LoadingSpinner />}
       {!isAuthenticating && !isAuthenticated && (
-        <>
+        <Card type="elevated">
           <div className="box">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="username">
               username
-              <input
-                className={`text-box${username.error ? ' input-error' : ''}`}
+              <Input
+                className={`${username.error ? 'input-error' : ''}`}
                 type="text"
                 id="username"
                 name="username"
@@ -86,10 +88,11 @@ function Login() {
             {username.error && <p className="input-error">username is required</p>}
           </div>
           <div className="box">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="password">
               password
-              <input
-                className={`text-box${password.error ? ' input-error' : ''}`}
+              <Input
+                className={`${password.error ? 'input-error' : ''}`}
                 type="password"
                 id="password"
                 name="password"
@@ -101,18 +104,18 @@ function Login() {
           </div>
           {error && <p className="box input-error">{error?.message}</p>}
           <div className="box">
-            <button className="button button-primary" type="button" onClick={handleLoginClick}>
+            <Button type="button" className="nmw-button-primary-flat" onClick={handleLoginClick}>
               login
-            </button>
+            </Button>
           </div>
-        </>
+        </Card>
       )}
       {isAuthenticated && (
-        <div className="box">
+        <Card type="outlined">
           <button className="button button-primary" type="button" onClick={handleLogoutClick}>
             logout
           </button>
-        </div>
+        </Card>
       )}
     </>
   ) : (
