@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Card } from '@nmw/react-components';
 import type Recipe from '../types/recipe';
 import TextInput from '../components/form/TextInput';
 import TextArea from '../components/form/TextArea';
@@ -108,76 +109,74 @@ function RecipeEntry() {
   };
 
   return (
-    <section className="content-wrapper">
-      <div className="content">
-        <form className="box">
-          <TextInput
-            name="title"
-            id="title"
-            label="Title"
-            value={recipeToUpdate?.title}
-            onChange={handleChange}
-            error={errors.title}
-          />
-          <TextInput
-            id="description"
-            name="description"
-            label="Description"
-            value={recipeToUpdate?.description}
-            onChange={handleChange}
-            error={errors.description}
-          />
-          <TextArea
-            id="ingredients"
-            name="ingredients"
-            label="Ingredient List"
-            rows={10}
-            value={recipeToUpdate?.ingredients}
-            onChange={handleChange}
-            error={errors.ingredients}
-          />
-          <TextArea
-            id="directions"
-            name="directions"
-            label="Directions"
-            rows={10}
-            value={recipeToUpdate?.directions}
-            onChange={handleChange}
-            error={errors.directions}
-          />
-          <SelectInput
-            id="category"
-            name="category"
-            label="Category"
-            value={recipeToUpdate?.category}
-            defaultOption="select category"
-            options={categorieOptions}
-            onChange={handleChange}
-            error={errors.category}
-          />
-          <div className="box">
-            <button
-              id="save"
-              type="button"
-              disabled={saving}
-              className="button button-primary"
-              onClick={handleSave}
-            >
-              {saving ? 'saving...' : 'save'}
-            </button>
-            <button
-              id="cancel"
-              type="button"
-              disabled={saving}
-              className="button button-link nmw-left-16"
-              onClick={handleCancel}
-            >
-              cancel
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
+    <Card type="filled">
+      <form className="box">
+        <TextInput
+          name="title"
+          id="title"
+          label="Title"
+          value={recipeToUpdate?.title}
+          onChange={handleChange}
+          error={errors.title}
+        />
+        <TextInput
+          id="description"
+          name="description"
+          label="Description"
+          value={recipeToUpdate?.description}
+          onChange={handleChange}
+          error={errors.description}
+        />
+        <TextArea
+          id="ingredients"
+          name="ingredients"
+          label="Ingredient List"
+          rows={10}
+          value={recipeToUpdate?.ingredients}
+          onChange={handleChange}
+          error={errors.ingredients}
+        />
+        <TextArea
+          id="directions"
+          name="directions"
+          label="Directions"
+          rows={10}
+          value={recipeToUpdate?.directions}
+          onChange={handleChange}
+          error={errors.directions}
+        />
+        <SelectInput
+          id="category"
+          name="category"
+          label="Category"
+          value={recipeToUpdate?.category}
+          defaultOption="select category"
+          options={categorieOptions}
+          onChange={handleChange}
+          error={errors.category}
+        />
+        <div className="box">
+          <button
+            id="save"
+            type="button"
+            disabled={saving}
+            className="button button-primary"
+            onClick={handleSave}
+          >
+            {saving ? 'saving...' : 'save'}
+          </button>
+          <button
+            id="cancel"
+            type="button"
+            disabled={saving}
+            className="button button-link nmw-left-16"
+            onClick={handleCancel}
+          >
+            cancel
+          </button>
+        </div>
+      </form>
+    </Card>
   );
 }
 

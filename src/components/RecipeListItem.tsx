@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Button } from '@nmw/react-components';
 import type Recipe from '../types/recipe';
 import RecipeApi from '../api/RecipeApi';
 import { RecipeContext } from '../context/RecipeContext';
@@ -50,9 +51,13 @@ function RecipeListItem({ recipe }: { recipe: Recipe }) {
       </div>
       {user !== null && (
         <div className=" list-item__flex-item list-item__flex-item__delete-button">
-          <button type="button" className="button button-link nmw-left-8" onClick={handleClick}>
+          <Button
+            type="button"
+            className="nmw-button-secondary-elevated nmw-left-8"
+            onClick={handleClick}
+          >
             delete
-          </button>
+          </Button>
         </div>
       )}
     </div>

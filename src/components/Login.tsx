@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react';
-import { Card, Button, Input } from '@nmw/react-components';
+import { Button, Input } from '@nmw/react-components';
 import UserApi from '../api/UserApi';
 import LoadingSpinner from './form/LoadingSpinner';
 import { UserContext } from '../context/UserContext';
@@ -71,7 +71,7 @@ function Login() {
     <>
       {isAuthenticating && <LoadingSpinner />}
       {!isAuthenticating && !isAuthenticated && (
-        <Card type="elevated">
+        <>
           <div className="box">
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="label" htmlFor="username">
@@ -108,14 +108,12 @@ function Login() {
               login
             </Button>
           </div>
-        </Card>
+        </>
       )}
       {isAuthenticated && (
-        <Card type="outlined">
-          <button className="button button-primary" type="button" onClick={handleLogoutClick}>
-            logout
-          </button>
-        </Card>
+        <button className="button button-primary" type="button" onClick={handleLogoutClick}>
+          logout
+        </button>
       )}
     </>
   ) : (

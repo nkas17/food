@@ -48,7 +48,7 @@ function RecipeDisplay() {
 
   return (
     <Page>
-      <Card type="elevated">
+      <Card type="filled">
         {isLoading && <LoadingSpinner />}
         <div className="box">
           <header>

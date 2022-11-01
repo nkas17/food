@@ -23,39 +23,15 @@ function RecipeList() {
   });
   return (
     <Page>
-      <Card type="elevated">
+      <Card type="filled">
         {isLoading && <LoadingSpinner />}
         {!isLoading &&
           (recipesToDisplay?.length > 0 ? (
-            <>
-              {user !== null && (
-                <p
-                  className="box"
-                  style={{
-                    textAlign: 'right',
-                  }}
-                >
-                  {' '}
-                  <Link className="button button-primary nmw-right-16" to="new/edit">
-                    add
-                  </Link>
-                </p>
-              )}
-              <div
-                className="list"
-                style={
-                  user !== null
-                    ? {
-                        borderTop: '1px solid #f29544',
-                      }
-                    : {}
-                }
-              >
-                {recipesToDisplay?.map((recipe: Recipe) => (
-                  <RecipeListItem recipe={recipe} key={recipe.id} />
-                ))}
-              </div>
-            </>
+            <div className="list">
+              {recipesToDisplay?.map((recipe: Recipe) => (
+                <RecipeListItem recipe={recipe} key={recipe.id} />
+              ))}
+            </div>
           ) : (
             <p
               className="box"
@@ -67,6 +43,13 @@ function RecipeList() {
               no recipes to display
             </p>
           ))}
+        {user !== null && (
+          <div className="nmw-top-32">
+            <Link className="nmw-button nmw-button-primary-elevated nmw-right-16" to="new/edit">
+              add
+            </Link>
+          </div>
+        )}
       </Card>
     </Page>
   );

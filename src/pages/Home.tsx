@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Page } from '@nmw/react-components';
+import { Card, Page } from '@nmw/react-components';
 import Login from '../components/Login';
 import { RecipeContext } from '../context/RecipeContext';
 import LoadingSpinner from '../components/form/LoadingSpinner';
@@ -9,7 +9,7 @@ function Home() {
   const [{ isLoading }] = React.useContext(RecipeContext);
   return (
     <Page>
-      <div className="content">{isLoading ? <LoadingSpinner /> : <Login />}</div>
+      <Card type="filled">{isLoading ? <LoadingSpinner /> : <Login />}</Card>
     </Page>
   );
 }
