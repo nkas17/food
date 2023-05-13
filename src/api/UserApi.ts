@@ -15,7 +15,7 @@ const handleResult = (response: Response) => {
 
 const url =
   process.env.NODE_ENV === 'production'
-    ? 'https://recipe-api-gateway.herokuapp.com/user/login'
+    ? 'https://recipe-api-gateway.onrender.com/user/login'
     : 'http://localhost:3000/user/login';
 
 class UserApi {
