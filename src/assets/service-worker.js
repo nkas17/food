@@ -17,7 +17,7 @@ self.addEventListener('install', function (event) {
            The method below will add all resources we've indicated to the cache,
            after making HTTP requests for each of them.
         */
-        return cache.addAll(['/', '/food.webp', '/main.js']);
+        return cache.addAll(['/', '/bread.png', '/main.js']);
       })
       .then(function () {
         console.log('WORKER: install completed');
