@@ -81,7 +81,8 @@ function RecipeEntry() {
       const updatedRecipe: Recipe = await RecipeApi.saveRecipe(
         {
           ...recipeToUpdate,
-          id: replaceAll(recipeToUpdate.title, ' ', '-'),
+          // eslint-disable-next-line quotes
+          id: replaceAll(replaceAll(recipeToUpdate.title, ' ', '-'), "'", ''),
         },
         user.token || '',
       );
