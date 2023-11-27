@@ -111,9 +111,9 @@ function Login() {
         </>
       )}
       {isAuthenticated && (
-        <button className="button button-primary" type="button" onClick={handleLogoutClick}>
+        <Button className="nmw-button-primary-flat" type="button" onClick={handleLogoutClick}>
           logout
-        </button>
+        </Button>
       )}
     </>
   ) : (
